@@ -158,6 +158,8 @@ ExternalProject_Add(
     SOURCE_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/cpp_packages/trace"
     BINARY_DIR  "${CMAKE_CURRENT_BINARY_DIR}/trace-build"
     INSTALL_DIR "${TRACE_STAGING}"
+    PATCH_COMMAND patch -p1 --forward --reject-file=- -i
+        "${CMAKE_CURRENT_SOURCE_DIR}/patches/trace-no-cetmodules.patch" || true
     CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
