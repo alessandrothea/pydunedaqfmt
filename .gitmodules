@@ -1,0 +1,14 @@
+[submodule "cpp_packages/daq-cmake"]
+	path = cpp_packages/daq-cmake
+	url = https://github.com/DUNE-DAQ/daq-cmake
+	branch = develop
+
+[submodule "cpp_packages/detdataformats"]
+	path = cpp_packages/detdataformats
+	url = https://github.com/DUNE-DAQ/detdataformats
+	branch = develop
+
+[submodule "cpp_packages/fddetdataformats"]
+	path = cpp_packages/fddetdataformats
+	url = https://github.com/DUNE-DAQ/fddetdataformats
+	branch = develop

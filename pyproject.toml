@@ -1,0 +1,17 @@
+[build-system]
+requires = ["scikit-build-core>=0.9", "pybind11>=2.11"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "pydunedaqfmt"
+version = "0.1.0"
+description = "Python bindings for DUNE DAQ detector data formats"
+requires-python = ">=3.9"
+license = { text = "BSD-3-Clause" }
+
+[tool.scikit-build]
+cmake.build-type = "Release"
+# Python file placement is handled by the superbuild's INSTALL_COMMAND
+# copying into SKBUILD_PLATLIB_DIR, so we disable scikit-build-core's
+# own package discovery.
+wheel.packages = []
