@@ -70,7 +70,29 @@ ExternalProject_Add(
             "${PYTHON_INSTALL_DIR}"
 )
 
-# ── Step 3: build fddetdataformats against daq-cmake + detdataformats ─────────
+# ── Step 3: build daqdataformats against the installed daq-cmake ─────────────
+ExternalProject_Add(
+    daqdataformats_ep
+    DEPENDS     daq_cmake_ep
+    SOURCE_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/cpp_packages/daqdataformats"
+    BINARY_DIR  "${CMAKE_CURRENT_BINARY_DIR}/daqdataformats-build"
+    INSTALL_DIR "${CMAKE_CURRENT_BINARY_DIR}/daqdataformats-install"
+    CMAKE_ARGS
+        -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_PREFIX_PATH=${DAQ_CMAKE_STAGING}
+        -Dpybind11_DIR=${PYBIND11_CMAKE_DIR}
+        -DCMAKE_INSTALL_LIBDIR=lib
+        -DBUILD_TESTING=OFF
+    BUILD_COMMAND   ${CMAKE_COMMAND} --build <BINARY_DIR>
+    INSTALL_COMMAND
+        ${CMAKE_COMMAND} --install <BINARY_DIR>
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            <INSTALL_DIR>/lib/python
+            "${PYTHON_INSTALL_DIR}"
+)
+
+# ── Step 4: build fddetdataformats against daq-cmake + detdataformats ─────────
 ExternalProject_Add(
     fddetdataformats_ep
     DEPENDS         daq_cmake_ep detdataformats_ep

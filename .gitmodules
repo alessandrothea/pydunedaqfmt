@@ -12,3 +12,7 @@
 	path = cpp_packages/fddetdataformats
 	url = https://github.com/DUNE-DAQ/fddetdataformats
 	branch = develop
+[submodule "cpp_packages/daqdataformats"]
+	path = cpp_packages/daqdataformats
+	url = https://github.com/DUNE-DAQ/daqdataformats.git
+	branch = develop
