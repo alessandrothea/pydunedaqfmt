@@ -1,7 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM --platform=linux/amd64 almalinux:9 AS builder
 
-RUN dnf install -y \
+RUN dnf install -y epel-release \
+    && dnf config-manager --set-enabled crb \
+    && dnf install -y \
         cmake \
         gcc-c++ \
         git \
@@ -9,6 +11,9 @@ RUN dnf install -y \
         python3 \
         python3-devel \
         python3-pip \
+        fmt-devel \
+        protobuf-devel \
+        abseil-cpp-devel \
     && dnf clean all
 
 RUN python3 -m pip install --upgrade pip && \
@@ -33,5 +38,8 @@ COPY --from=builder /dist/*.whl /wheels/
 RUN python3 -m pip install --no-index --find-links /wheels pydunedaqfmt \
     && rm -rf /wheels
 
-# Smoke test
-RUN python3 -c "import detdataformats; print('OK:', detdataformats.DetID())"
+# Smoke tests
+RUN python3 -c "import detdataformats; print('detdataformats OK:', detdataformats.DetID())" && \
+    python3 -c "import daqdataformats;  print('daqdataformats  OK:', daqdataformats.SourceID())" && \
+    python3 -c "import trgdataformats;  print('trgdataformats  OK')" && \
+    python3 -c "import fddetdataformats; print('fddetdataformats OK')"

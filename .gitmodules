@@ -16,3 +16,25 @@
 	path = cpp_packages/daqdataformats
 	url = https://github.com/DUNE-DAQ/daqdataformats.git
 	branch = develop
+[submodule "cpp_packages/trgdataformats"]
+	path = cpp_packages/trgdataformats
+	url = https://github.com/DUNE-DAQ/trgdataformats
+	branch = develop
+[submodule "cpp_packages/cetplugin"]
+	path = cpp_packages/cetplugin
+	url = https://github.com/alessandrothea/cetplugin
+[submodule "cpp_packages/detchannelmaps"]
+	path = cpp_packages/detchannelmaps
+	url = https://github.com/DUNE-DAQ/detchannelmaps
+[submodule "cpp_packages/ers"]
+	path = cpp_packages/ers
+	url = https://github.com/DUNE-DAQ/ers
+[submodule "cpp_packages/logging"]
+	path = cpp_packages/logging
+	url = https://github.com/DUNE-DAQ/logging
+[submodule "cpp_packages/trace"]
+	path = cpp_packages/trace
+	url = https://github.com/art-daq/trace
+[submodule "cpp_packages/rawdatautils"]
+	path = cpp_packages/rawdatautils
+	url = https://github.com/DUNE-DAQ/rawdatautils
